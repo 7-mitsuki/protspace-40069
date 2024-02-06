@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
       redirect_to prototype_path(@prototype)
     else
       # renderは表示するコントローラを経由しないのだ
+      @comments = @prototype.comments.includes(:user)
       render 'prototypes/show', status: :unprocessable_entity
     end
   end
